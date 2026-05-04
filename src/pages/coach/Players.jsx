@@ -8,6 +8,20 @@ export default function Players() {
   const [players, setPlayers] = useState(getPlayers)
   const [showForm, setShowForm] = useState(false)
   const [form, setForm] = useState({ name: '', position: '', squadNumber: '' })
+  const sortedPlayers = [...players].sort((a, b) => {
+    const aHasNumber = typeof a.squadNumber === 'number'
+    const bHasNumber = typeof b.squadNumber === 'number'
+
+    if (aHasNumber && bHasNumber && a.squadNumber !== b.squadNumber) {
+      return a.squadNumber - b.squadNumber
+    }
+
+    if (aHasNumber !== bHasNumber) {
+      return aHasNumber ? -1 : 1
+    }
+
+    return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+  })
 
   function handleAdd() {
     if (!form.name.trim()) return
@@ -33,7 +47,7 @@ export default function Players() {
 
         {players.length > 0 && (
           <div className="flex flex-col gap-2 mb-4">
-            {players.map(player => (
+            {sortedPlayers.map(player => (
               <div key={player.id} className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-white">
                 <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0">
                   <span className="text-green-700 font-bold text-sm">
