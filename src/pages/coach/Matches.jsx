@@ -6,7 +6,7 @@ import Layout from '../../components/Layout'
 export default function Matches() {
   const [matches, setMatches] = useState(getMatches)
   const [showForm, setShowForm] = useState(false)
-  const [form, setForm] = useState({ opponent: '', date: '', time: '', location: '' })
+  const [form, setForm] = useState({ opponent: '', date: '', time: '', location: '', notes: '' })
 
   function handleAdd() {
     if (!form.opponent.trim() || !form.date) return
@@ -15,9 +15,10 @@ export default function Matches() {
       date: form.date,
       time: form.time,
       location: form.location.trim(),
+      notes: form.notes.trim(),
     })
     setMatches(getMatches())
-    setForm({ opponent: '', date: '', time: '', location: '' })
+    setForm({ opponent: '', date: '', time: '', location: '', notes: '' })
     setShowForm(false)
   }
 
@@ -113,6 +114,17 @@ export default function Matches() {
                 onChange={e => setForm({ ...form, location: e.target.value })}
                 className="w-full px-4 py-3 border border-gray-200 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="e.g. Western Springs"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Match notes</label>
+              <textarea
+                value={form.notes}
+                onChange={e => setForm({ ...form, notes: e.target.value })}
+                rows={3}
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+                placeholder="e.g. Meet at 12:30, bring black shorts"
               />
             </div>
 

@@ -54,6 +54,13 @@ export default function MatchDetail() {
           </p>
         </div>
 
+        {match.notes && (
+          <div className="mb-6 rounded-xl border border-green-100 bg-green-50 p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-green-700 mb-1">Match notes</p>
+            <p className="text-sm text-green-900 whitespace-pre-line">{match.notes}</p>
+          </div>
+        )}
+
         {/* Tabs */}
         <div className="flex bg-gray-100 rounded-xl p-1 mb-6">
           <button
