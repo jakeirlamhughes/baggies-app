@@ -20,7 +20,12 @@ A private, closed-circuit web app for Mt. Albert Ponsonby Baggies — a social f
 [Fill in once dev environment is set up]
 
 ## Conventions
-- Branch naming: feature/, fix/, chore/
+- Branch naming:
+    feature/   → new functionality       e.g. feature/player-profiles
+    fix/       → bug fixes               e.g. fix/rsvp-not-saving
+    chore/     → maintenance & config    e.g. chore/update-dependencies
+    docs/      → documentation only      e.g. docs/update-readme
+    test/      → test additions only     e.g. test/rsvp-spec-shells
 - Commits: descriptive present tense (e.g. "Add RSVP confirmation handler")
 - Tests: written in SpecKit using BDD describe/it structure
 - Every new feature needs a SpecKit test shell before code is written
